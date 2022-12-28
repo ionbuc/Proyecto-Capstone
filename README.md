@@ -58,3 +58,7 @@ El Módulo MQ-135 es es ideal para detectar la calidad de aire pues permite la d
 En el siguiente diagrama se muestra las conexiones necesarias para obtener las lecturas de los dos sensores y enviarlas por medio del protocolo MQTT al servidor Node red y procesar los datos, almacenándolos en una base de datos y mostrándolos en un Flow.
 
 ![](https://scontent.fmex27-1.fna.fbcdn.net/v/t39.30808-6/322468120_700141891459810_4420626460333194085_n.jpg?stp=dst-jpg_s600x600&_nc_cat=104&ccb=1-7&_nc_sid=730e14&_nc_ohc=VdFl9iIrLjoAX_YFeQ6&_nc_oc=AQndvn0yV1NMe--Lg_c7dO7Ya-nYUZziJHVOejYv5Cp1G_5KchHju8a3OQPCb2sTYlcuFdIfGkQgY-pav6szVrN9&_nc_ht=scontent.fmex27-1.fna&oh=00_AfCe1yFKSr9S58GNEt5IFEPEcA3diJwCZitPsgklPndg2A&oe=63B17E66)
+
+**Resultados en Node red.**
+
+![](https://scontent.fmex27-1.fna.fbcdn.net/v/t39.30808-6/322113998_1339695213534422_4898545840929984890_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=730e14&_nc_ohc=9VghdV-tDf4AX_RC9ii&_nc_ht=scontent.fmex27-1.fna&oh=00_AfDkXqBakVfvIiT80Dbxjeu1Qd1NAr3DDb43LMUoDrop9g&oe=63AFD165)
