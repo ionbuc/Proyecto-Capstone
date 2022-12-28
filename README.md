@@ -62,4 +62,6 @@ En el siguiente diagrama se muestra las conexiones necesarias para obtener las l
 
 ### **RESULTADOS**
 
+
+#### Node Red
 ![](https://scontent.fmex27-1.fna.fbcdn.net/v/t39.30808-6/322113998_1339695213534422_4898545840929984890_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=730e14&_nc_ohc=9VghdV-tDf4AX_RC9ii&_nc_ht=scontent.fmex27-1.fna&oh=00_AfDkXqBakVfvIiT80Dbxjeu1Qd1NAr3DDb43LMUoDrop9g&oe=63AFD165)
