@@ -65,3 +65,11 @@ En el siguiente diagrama se muestra las conexiones necesarias para obtener las l
 
 #### Node Red
 ![](https://scontent.fmex27-1.fna.fbcdn.net/v/t39.30808-6/322113998_1339695213534422_4898545840929984890_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=730e14&_nc_ohc=9VghdV-tDf4AX_RC9ii&_nc_ht=scontent.fmex27-1.fna&oh=00_AfDkXqBakVfvIiT80Dbxjeu1Qd1NAr3DDb43LMUoDrop9g&oe=63AFD165)
+
+La cámara ESP32CAM se programó para enviar el flujo de video constante mediante la comunicación wifi.
+
+![](https://scontent.fmex5-1.fna.fbcdn.net/v/t39.30808-6/323238671_462717892730725_3317446959954122287_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=730e14&_nc_ohc=p2lvQ8bWzG4AX_ZR29Z&_nc_ht=scontent.fmex5-1.fna&oh=00_AfCX08iDC5O3xivwrOJquy0_CNkYE_CPWxfQF_7vdxAyQg&oe=63B2BD5E)
+
+Para simular el flujo de agua se implementó un ventilador para que simulara el caudal de agua de esta forma se puede ver el envío de los datos registrados por el módulo ESP32.
+
+![](https://scontent.fmex5-1.fna.fbcdn.net/v/t39.30808-6/322878536_714321403388548_1588804925121319650_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=730e14&_nc_ohc=j0s4s_LhJp4AX8_n1vJ&_nc_ht=scontent.fmex5-1.fna&oh=00_AfBBlkFe07kH8_qveXJRW4KU6A1k3s8SVsNG5OZhTYi4Zg&oe=63B239D7)
