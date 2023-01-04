@@ -1,0 +1,405 @@
+[
+    {
+        "id": "1e3a05d2bfc8a7ea",
+        "type": "tab",
+        "label": "FlujoProyecto",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "7a46d1751d0e9ecc",
+        "type": "mqtt in",
+        "z": "1e3a05d2bfc8a7ea",
+        "name": "",
+        "topic": "equipo11/gas/mqtt",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "9cfec558491b1d2a",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 130,
+        "y": 160,
+        "wires": [
+            [
+                "8825a086368b9b22"
+            ]
+        ]
+    },
+    {
+        "id": "8825a086368b9b22",
+        "type": "json",
+        "z": "1e3a05d2bfc8a7ea",
+        "name": "",
+        "property": "payload",
+        "action": "obj",
+        "pretty": false,
+        "x": 310,
+        "y": 160,
+        "wires": [
+            [
+                "2e8a76daaf44b9a6",
+                "63a0a0b822f82349",
+                "181cf1e432e4f403",
+                "ce598075abd4afce"
+            ]
+        ]
+    },
+    {
+        "id": "2e8a76daaf44b9a6",
+        "type": "function",
+        "z": "1e3a05d2bfc8a7ea",
+        "name": "ID",
+        "func": "msg.payload = msg.payload.id;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 470,
+        "y": 100,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "63a0a0b822f82349",
+        "type": "function",
+        "z": "1e3a05d2bfc8a7ea",
+        "name": "Volumen",
+        "func": "msg.payload = msg.payload.Caudal;\nglobal.set(\"Volumen\", msg.payload);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 480,
+        "y": 200,
+        "wires": [
+            [
+                "02bd4182ebfb0c32"
+            ]
+        ]
+    },
+    {
+        "id": "181cf1e432e4f403",
+        "type": "function",
+        "z": "1e3a05d2bfc8a7ea",
+        "name": "Query",
+        "func": "msg.topic = \"INSERT INTO consumo (`volumen`,`gas`) VALUES ('\" + global.get(\"Volumen\") + \"','\"+global.get(\"Porcentaje\")+\"');\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 470,
+        "y": 300,
+        "wires": [
+            [
+                "9af0d5700520a444"
+            ]
+        ]
+    },
+    {
+        "id": "9af0d5700520a444",
+        "type": "mysql",
+        "z": "1e3a05d2bfc8a7ea",
+        "mydb": "845df4803106e8f6",
+        "name": "",
+        "x": 690,
+        "y": 300,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "ce598075abd4afce",
+        "type": "function",
+        "z": "1e3a05d2bfc8a7ea",
+        "name": "Gas",
+        "func": "msg.payload = msg.payload.Gas;\nglobal.set(\"Porcentaje\", msg.payload);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 470,
+        "y": 400,
+        "wires": [
+            [
+                "930abaa106bc953a",
+                "a5b7811b11bad763"
+            ]
+        ]
+    },
+    {
+        "id": "02bd4182ebfb0c32",
+        "type": "ui_gauge",
+        "z": "1e3a05d2bfc8a7ea",
+        "name": "",
+        "group": "49cef06e5e360d56",
+        "order": 1,
+        "width": 6,
+        "height": 5,
+        "gtype": "wave",
+        "title": "Agua utilizada",
+        "label": "L",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "1500",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "className": "",
+        "x": 680,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "930abaa106bc953a",
+        "type": "ui_chart",
+        "z": "1e3a05d2bfc8a7ea",
+        "name": "",
+        "group": "7a1f53130361449b",
+        "order": 1,
+        "width": 8,
+        "height": 5,
+        "label": "Sensor de gas",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "1000",
+        "removeOlder": "2",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 680,
+        "y": 400,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "4e6768133a6a3941",
+        "type": "ui_template",
+        "z": "1e3a05d2bfc8a7ea",
+        "group": "e9d5b594b4bb4829",
+        "name": "Flujo de video",
+        "order": 1,
+        "width": 12,
+        "height": 11,
+        "format": "<html lang=\"es\">\n\n<head>\n    <meta charset=\"utf-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n\n    <title>Video Vigilancia</title>\n\n\n</head>\n\n<body>\n\n    <h2><label>SISTEMA DE VIDEO VIGILANCIA</label></h2>\n\n    <img src=\"http://192.168.100.119\" width=\"480px\">\n\n\n</body>\n\n</html>\n\n<div ng-bind-html=\"msg.payload\"></div>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 480,
+        "y": 580,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "a5b7811b11bad763",
+        "type": "function",
+        "z": "1e3a05d2bfc8a7ea",
+        "name": "Alarma de gas alto",
+        "func": "\nif ((global.get(\"Porcentaje\") > 450)) {\n\n    msg.payload = \"índice de gas alto\";\n    return msg;\n} \n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 690,
+        "y": 480,
+        "wires": [
+            [
+                "b28045e72d241d23",
+                "be5fe7d5080cb5b1"
+            ]
+        ]
+    },
+    {
+        "id": "f593a08496ec079b",
+        "type": "debug",
+        "z": "1e3a05d2bfc8a7ea",
+        "name": "debug 6",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1060,
+        "y": 660,
+        "wires": []
+    },
+    {
+        "id": "c22f6de2cb829b83",
+        "type": "node-red-contrib-whatsapp-cmb-send-message",
+        "z": "1e3a05d2bfc8a7ea",
+        "name": "Whatsapp",
+        "account": "70d08972ee1c9604",
+        "text": "payload",
+        "inputtypemessage": "msg",
+        "rejectssl": false,
+        "x": 1080,
+        "y": 420,
+        "wires": [
+            [
+                "f593a08496ec079b"
+            ]
+        ]
+    },
+    {
+        "id": "b28045e72d241d23",
+        "type": "change",
+        "z": "1e3a05d2bfc8a7ea",
+        "name": "Datos a enviar",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "GAS ALTO",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 900,
+        "y": 320,
+        "wires": [
+            [
+                "c22f6de2cb829b83"
+            ]
+        ]
+    },
+    {
+        "id": "be5fe7d5080cb5b1",
+        "type": "ui_audio",
+        "z": "1e3a05d2bfc8a7ea",
+        "name": "",
+        "group": "7a1f53130361449b",
+        "voice": "Google español",
+        "always": "",
+        "x": 960,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "9cfec558491b1d2a",
+        "type": "mqtt-broker",
+        "name": "Localhost",
+        "broker": "localhost",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "845df4803106e8f6",
+        "type": "MySQLdatabase",
+        "name": "",
+        "host": "127.0.0.1",
+        "port": "3306",
+        "db": "MonitoreoAguaGas",
+        "tz": "",
+        "charset": "UTF8"
+    },
+    {
+        "id": "49cef06e5e360d56",
+        "type": "ui_group",
+        "name": "Consumo agua",
+        "tab": "327f1769d5e85498",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "7a1f53130361449b",
+        "type": "ui_group",
+        "name": "Calidad de aire",
+        "tab": "327f1769d5e85498",
+        "order": 2,
+        "disp": true,
+        "width": 8,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "e9d5b594b4bb4829",
+        "type": "ui_group",
+        "name": "Video",
+        "tab": "327f1769d5e85498",
+        "order": 3,
+        "disp": true,
+        "width": "12",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "70d08972ee1c9604",
+        "type": "node-red-contrib-whatsapp-cmb-account",
+        "name": "Enrique Buchán"
+    },
+    {
+        "id": "327f1769d5e85498",
+        "type": "ui_tab",
+        "name": "Proyecto",
+        "icon": "dashboard",
+        "order": 8,
+        "disabled": false,
+        "hidden": false
+    }
+]
